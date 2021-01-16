@@ -1,5 +1,4 @@
 package com.afroexaentric.Login_SignUp;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityOptions;
