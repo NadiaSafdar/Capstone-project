@@ -1,0 +1,139 @@
+/*
+SQLyog Enterprise v13.1.1 (64 bit)
+MySQL - 10.1.37-MariaDB : Database - saloon
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*Table structure for table `about` */
+
+DROP TABLE IF EXISTS `about`;
+
+CREATE TABLE `about` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(300) DEFAULT NULL,
+  `image` varchar(1000) DEFAULT NULL,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `added_by` bigint(20) DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `updated_by` bigint(20) DEFAULT NULL,
+  `status` smallint(1) DEFAULT '1',
+  `is_deleted` smallint(1) DEFAULT '0',
+  `address` varchar(1000) DEFAULT NULL,
+  `description` text,
+  `monday_from` time DEFAULT NULL,
+  `monday_to` time DEFAULT NULL,
+  `tuesday_from` time DEFAULT NULL,
+  `tuesday_to` time DEFAULT NULL,
+  `wednesday_from` time DEFAULT NULL,
+  `wednesday_to` time DEFAULT NULL,
+  `thursday_from` time DEFAULT NULL,
+  `thursday_to` time DEFAULT NULL,
+  `friday_from` time DEFAULT NULL,
+  `friday_to` time DEFAULT NULL,
+  `saturday_from` time DEFAULT NULL,
+  `saturday_to` time DEFAULT NULL,
+  `sunday_from` time DEFAULT NULL,
+  `sunday_to` time DEFAULT NULL,
+  `city_id` bigint(20) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `booking` */
+
+DROP TABLE IF EXISTS `booking`;
+
+CREATE TABLE `booking` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL,
+  `duration` smallint(6) DEFAULT NULL,
+  `duration_type` varchar(10) DEFAULT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
+  `status` smallint(1) DEFAULT '1',
+  `location_type` smallint(1) DEFAULT '1',
+  `address` varchar(1500) DEFAULT NULL,
+  `is_deleted` smallint(1) DEFAULT '0',
+  `approved_by` bigint(20) DEFAULT NULL,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT NULL,
+  `appointment_date` date DEFAULT NULL,
+  `appointment_time` time DEFAULT NULL,
+  `requested_date` date DEFAULT NULL,
+  `requested_time` time DEFAULT NULL,
+  `comments` text,
+  `done` smallint(6) NOT NULL DEFAULT '0',
+  `paid` smallint(6) DEFAULT '0',
+  `tax` float DEFAULT '0',
+  `tax_percentage` float DEFAULT '8.875'
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `booking_detail` */
+
+DROP TABLE IF EXISTS `booking_detail`;
+
+CREATE TABLE `booking_detail` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `booking_id` bigint(20) DEFAULT NULL,
+  `subservice_id` bigint(20) DEFAULT NULL,
+  `name` varchar(500) DEFAULT NULL,
+  `image` varchar(1000) DEFAULT NULL,
+  `description` text,
+  `price` decimal(10,2) DEFAULT NULL,
+  `duration` smallint(6) DEFAULT NULL,
+  `duration_type` varchar(10) DEFAULT NULL,
+  `status` smallint(1) DEFAULT '1',
+  `is_deleted` smallint(1) DEFAULT '0',
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `gallery` */
+
+DROP TABLE IF EXISTS `gallery`;
+
+CREATE TABLE `gallery` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(300) DEFAULT NULL,
+  `image` varchar(1000) DEFAULT NULL,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `added_by` bigint(20) DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `updated_by` bigint(20) DEFAULT NULL,
+  `status` smallint(1) DEFAULT '1',
+  `is_deleted` smallint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `noti` */
+
+DROP TABLE IF EXISTS `noti`;
+
+CREATE TABLE `noti` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL,
+  `booking_id` bigint(20) DEFAULT NULL,
+  `review_id` bigint(20) DEFAULT NULL,
+  `description` text,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `added_by` bigint(20) DEFAULT NULL,
+  `updated_by` bigint(20) DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `status` smallint(1) DEFAULT '0',
+  `is_deleted` smallint(1) DEFAULT '0',
+  `isoffer` smallint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
