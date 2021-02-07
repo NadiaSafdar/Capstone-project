@@ -1,0 +1,120 @@
+/*
+SQLyog Enterprise v13.1.1 (64 bit)
+MySQL - 10.1.37-MariaDB : Database - saloon
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*Table structure for table `users` */
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `email` varchar(250) DEFAULT NULL,
+  `pass` varchar(1000) DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `name` varchar(300) DEFAULT NULL,
+  `image` varchar(1000) DEFAULT NULL,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT NULL,
+  `login_date` datetime DEFAULT NULL,
+  `status` smallint(1) DEFAULT '1',
+  `forgot_pass_key` text,
+  `is_deleted` smallint(1) DEFAULT '0',
+  `valid_date` datetime DEFAULT NULL,
+  `role_id` bigint(20) DEFAULT '1',
+  `updated_by` bigint(20) DEFAULT NULL,
+  `online` smallint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+
+
+/*Table structure for table `subservice` */
+
+DROP TABLE IF EXISTS `subservice`;
+
+CREATE TABLE `subservice` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `service_id` bigint(20) DEFAULT NULL,
+  `image` varchar(1000) DEFAULT NULL,
+  `name` varchar(300) DEFAULT NULL,
+  `description` text,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `added_by` bigint(20) DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `updated_by` bigint(20) DEFAULT NULL,
+  `status` smallint(1) DEFAULT '1',
+  `is_deleted` smallint(1) DEFAULT '0',
+  `duration` smallint(6) DEFAULT NULL,
+  `duration_type` varchar(10) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `display_order` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `service` */
+
+DROP TABLE IF EXISTS `service`;
+
+CREATE TABLE `service` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(300) DEFAULT NULL,
+  `image` varchar(1000) DEFAULT NULL,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `added_by` bigint(20) DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `updated_by` bigint(20) DEFAULT NULL,
+  `status` smallint(1) DEFAULT '1',
+  `is_deleted` smallint(1) DEFAULT '0',
+  `display_order` smallint(6) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `role` */
+
+DROP TABLE IF EXISTS `role`;
+
+CREATE TABLE `role` (
+  `role_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(300) DEFAULT NULL,
+  `status` smallint(1) DEFAULT '1',
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` datetime DEFAULT NULL,
+  `is_deleted` smallint(1) DEFAULT '0',
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `reviews` */
+
+DROP TABLE IF EXISTS `reviews`;
+
+CREATE TABLE `reviews` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL,
+  `booking_id` bigint(20) DEFAULT NULL,
+  `comments` text,
+  `rating` float DEFAULT NULL,
+  `added_by` bigint(20) DEFAULT NULL,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_by` bigint(20) DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `status` smallint(1) DEFAULT '0',
+  `is_deleted` smallint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+
+
